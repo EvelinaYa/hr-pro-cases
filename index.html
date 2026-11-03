@@ -25,13 +25,20 @@
           <a class="menu-btn" href="#">Экспертиза</a>
           <a class="menu-btn" href="#">Полезное <span class="icon-chevron" aria-hidden="true"></span></a>
         </nav>
-        <a class="btn-outline" href="#request">Запросить консультацию</a>
+        <a class="btn-outline" href="#form">Запросить консультацию</a>
       </div>
     </header>
 
     <section class="hero container">
       <h1 class="hero__title">Кейсы внедрения КЭДО и&nbsp;истории клиентов</h1>
       <p class="hero__text">Делимся отзывами сотрудников о КЭДО и эффектами цифровизации кадровых процессов</p>
+      <div class="hero__users">
+        <img class="hero__users-logos" src="img/users-logos.png" width="192" height="84" alt="Логотипы клиентов Directum HR Pro">
+        <div class="hero__users-text">
+          <p class="hero__users-num">350 000+</p>
+          <p>пользователей Directum HR Pro решают кадровые вопросы в цифре</p>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -61,39 +68,25 @@
 
     <!-- Отзывы -->
     <section class="section reviews container" id="reviews">
-      <div class="section__head">
-        <h2 class="h3">Отзывы о КЭДО Directum HR Pro</h2>
-        <p class="section__lead">Собрали отзывы сотрудников и руководителей проектов внедрения КЭДО о том, как похорошели процессы после цифровизации кадрового документооборота.</p>
-      </div>
-      <div class="reviews__filters">
-        <div class="mode-tabs" role="tablist" aria-label="Формат отзывов">
-          <button class="mode-tab" type="button" role="tab" data-mode="read">Читать отзывы</button>
-          <button class="mode-tab" type="button" role="tab" data-mode="watch">Смотреть отзывы</button>
+      <div class="reviews__head">
+        <div class="section__head">
+          <h2 class="h3">Отзывы о КЭДО Directum HR Pro</h2>
+          <p class="section__lead">Собрали отзывы сотрудников и руководителей проектов внедрения КЭДО о том, как похорошели процессы после цифровизации кадрового документооборота.</p>
         </div>
-        <div class="tags" data-tags>
-          <button class="tag" type="button">Все отзывы</button>
-          <button class="tag" type="button">Производство</button>
-          <button class="tag" type="button">ИТ</button>
-          <button class="tag" type="button">Ритейл и FMCG</button>
-          <button class="tag" type="button">Финансы и банки</button>
-          <button class="tag" type="button">Авиа</button>
-          <button class="tag" type="button">Пищепром</button>
-          <button class="tag tags__row2" type="button">Госсектор</button>
-          <button class="tag is-active" type="button">Вузы</button>
-          <button class="tag" type="button">Строительство</button>
-          <button class="tag" type="button">Фарма</button>
-          <button class="tag tags__wide" type="button">Металлургия и добыча</button>
+        <div class="mode-tabs" role="tablist" aria-label="Формат отзывов">
+          <button class="tag" type="button" role="tab" data-mode="read">Читать отзывы</button>
+          <button class="tag" type="button" role="tab" data-mode="watch">Смотреть отзывы</button>
         </div>
       </div>
       <div class="cards" id="reviews-list"></div>
     </section>
 
     <!-- Баннер -->
-    <section class="banner container" id="request">
+    <section class="banner container">
       <div class="banner__inner">
         <img class="banner__bg" src="img/banner-bg.jpg" alt="" aria-hidden="true">
         <h2 class="banner__title">Оставьте заявку, и мы покажем, как Directum HR Pro решает задачи вашего бизнеса</h2>
-        <a class="btn-primary" href="#">Запросить консультацию</a>
+        <a class="btn-primary" href="#form">Запросить консультацию</a>
       </div>
     </section>
 
@@ -102,19 +95,18 @@
       <div class="section__head">
         <h2 class="h3">Бизнес-эффекты в кейсах КЭДО</h2>
       </div>
-      <div class="effects__grid">
-        <article class="effect">
-          <div class="effect__logo"><img src="img/logo-titan2.svg" width="317" height="27" alt="Титан-2 холдинг"></div>
+      <div class="effects__list">
+        <article class="effect effect--titan">
+          <img class="effect__bg" src="img/effect-titan.jpg" alt="" aria-hidden="true">
           <div class="effect__row">
-            <div class="effect__stats">
-              <div class="effect__stat">
-                <p class="effect__num">5 мин</p>
-                <p>занимает подача заявления на отпуск и его согласование</p>
-              </div>
-              <div class="effect__stat">
-                <p class="effect__num">до 6 млн руб.</p>
-                <p>ежегодная экономия на печати и доставке документов</p>
-              </div>
+            <div class="effect__logo"><img src="img/logo-titan2-white.svg" width="289" height="25" alt="Титан-2 холдинг"></div>
+            <div class="effect__stat">
+              <p class="effect__num">на 50%</p>
+              <p>сократилось время согласования</p>
+            </div>
+            <div class="effect__stat">
+              <p class="effect__num">в 4 раза</p>
+              <p>ускорилось формирование графика отпусков</p>
             </div>
             <div class="effect__about">
               <p>Единое цифровое пространство для кадровых процессов строительно-инжинирингового холдинга</p>
@@ -122,28 +114,194 @@
             </div>
           </div>
         </article>
-        <article class="effect">
-          <div class="effect__logo"><img src="img/logo-titan2.svg" width="317" height="27" alt="Титан-2 холдинг"></div>
+        <article class="effect effect--lenta">
+          <img class="effect__bg" src="img/effect-lenta.jpg" alt="" aria-hidden="true">
           <div class="effect__row">
-            <div class="effect__stats">
-              <div class="effect__stat">
-                <p class="effect__num">5 мин</p>
-                <p>занимает подача заявления на отпуск и его согласование</p>
-              </div>
-              <div class="effect__stat">
-                <p class="effect__num">до 6 млн руб.</p>
-                <p>ежегодная экономия на печати и доставке документов</p>
-              </div>
+            <div class="effect__logo effect__logo--left"><img src="img/logo-lenta.svg" width="197" height="78" alt="Лента"></div>
+            <div class="effect__stat">
+              <p class="effect__num">40 тыс.</p>
+              <p>пользователей</p>
+            </div>
+            <div class="effect__stat">
+              <p class="effect__num">95%</p>
+              <p>сотрудников оценили систему как удобную</p>
             </div>
             <div class="effect__about">
-              <p>Единое цифровое пространство для кадровых процессов строительно-инжинирингового холдинга</p>
+              <p>Как ведущий ритейлер управляет кадровыми документами в Directum HR Pro</p>
+              <a class="link-more" href="#">Подробнее <span class="link-more__icon"><img src="img/arrow-up-right.svg" width="15.5" height="15.5" alt=""></span></a>
+            </div>
+          </div>
+        </article>
+        <article class="effect effect--iek">
+          <img class="effect__bg" src="img/effect-iek.jpg" alt="" aria-hidden="true">
+          <div class="effect__row">
+            <div class="effect__logo effect__logo--left"><img src="img/logo-iek.svg" width="133" height="51" alt="IEK"></div>
+            <div class="effect__stat">
+              <p class="effect__num">90%</p>
+              <p>персонала принимают онлайн</p>
+            </div>
+            <div class="effect__stat">
+              <p class="effect__num">от 20 мин</p>
+              <p>занимает трудоустройство<br>в цифре</p>
+            </div>
+            <div class="effect__about">
+              <p>Как устроено дистанционное оформление сотрудников<br>в крупном холдинге</p>
+              <a class="link-more" href="#">Подробнее <span class="link-more__icon"><img src="img/arrow-up-right.svg" width="15.5" height="15.5" alt=""></span></a>
+            </div>
+          </div>
+        </article>
+        <article class="effect effect--utair">
+          <img class="effect__bg" src="img/effect-utair.jpg" alt="" aria-hidden="true">
+          <div class="effect__row">
+            <div class="effect__logo effect__logo--left">
+              <span class="logo-utair" role="img" aria-label="Utair">
+                <img src="img/utair-u.svg" width="51" height="48" alt="">
+                <img src="img/utair-word.svg" width="128" height="48" alt="">
+              </span>
+            </div>
+            <div class="effect__stat">
+              <p class="effect__num">5 мин</p>
+              <p>занимает подача заявления на отпуск<br>и его согласование</p>
+            </div>
+            <div class="effect__stat">
+              <p class="effect__num">до 6 млн руб.</p>
+              <p>ежегодная экономия<br>на печати и доставке документов</p>
+            </div>
+            <div class="effect__about">
+              <p>Быстрые и прозрачные кадровые процессы для российской авиакомпании</p>
               <a class="link-more" href="#">Подробнее <span class="link-more__icon"><img src="img/arrow-up-right.svg" width="15.5" height="15.5" alt=""></span></a>
             </div>
           </div>
         </article>
       </div>
     </section>
+
+    <!-- Вебинары -->
+    <section class="section webinars container">
+      <div class="section__head">
+        <h2 class="h3">Посмотрите вебинары с нашими клиентами</h2>
+      </div>
+      <div class="webinars__list">
+        <a class="webinar" href="#">
+          <img class="webinar__img" src="img/webinar-1.jpg" width="288" height="162" alt="">
+          <div class="webinar__body">
+            <div class="webinar__info">
+              <p class="webinar__meta"><span>28 октября 2026</span><span>Вебинар</span></p>
+              <h3 class="webinar__title">9 HR-страшилок в работе с персональными данными</h3>
+            </div>
+            <div class="webinar__footer">
+              <span class="webinar__status">Завершилось</span>
+              <span class="webinar__badge"><img src="img/ic-play-orange.svg" width="10" height="10" alt="">Доступна запись</span>
+            </div>
+          </div>
+        </a>
+        <a class="webinar" href="#">
+          <img class="webinar__img" src="img/webinar-2.jpg" width="288" height="162" alt="">
+          <div class="webinar__body">
+            <div class="webinar__info">
+              <p class="webinar__meta"><span>8 октября 2026</span><span>Вебинар</span></p>
+              <h3 class="webinar__title">Под одной крышей: суперапп объединяет сервисы для сотрудников</h3>
+            </div>
+            <div class="webinar__footer">
+              <span class="webinar__status">Завершилось</span>
+              <span class="webinar__badge"><img src="img/ic-play-orange.svg" width="10" height="10" alt="">Доступна запись</span>
+            </div>
+          </div>
+        </a>
+        <a class="webinar" href="#">
+          <img class="webinar__img" src="img/webinar-3.jpg" width="288" height="162" alt="">
+          <div class="webinar__body">
+            <div class="webinar__info">
+              <p class="webinar__meta"><span>10 сентября 2026</span><span>Вебинар</span></p>
+              <h3 class="webinar__title">Повышение продуктивности сотрудников в ГК «Нацпроектстрой»: выгоды экосистемы</h3>
+            </div>
+            <div class="webinar__footer">
+              <span class="webinar__status">Завершилось</span>
+              <span class="webinar__badge"><img src="img/ic-play-orange.svg" width="10" height="10" alt="">Доступна запись</span>
+            </div>
+          </div>
+        </a>
+        <a class="webinar" href="#">
+          <img class="webinar__img" src="img/webinar-4.jpg" width="288" height="162" alt="">
+          <div class="webinar__body">
+            <div class="webinar__info">
+              <p class="webinar__meta"><span>15 июля 2026</span><span>Вебинар</span></p>
+              <h3 class="webinar__title">Увольнять нельзя развивать: принципы умной оптимизации</h3>
+            </div>
+            <div class="webinar__footer">
+              <span class="webinar__status">Завершилось</span>
+              <span class="webinar__badge"><img src="img/ic-play-orange.svg" width="10" height="10" alt="">Доступна запись</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Форма -->
+    <section class="request" id="form">
+      <img class="request__bg" src="img/form-bg.jpg" alt="" aria-hidden="true">
+      <div class="request__inner container">
+        <h2 class="request__title">Закажите консультацию</h2>
+        <p class="request__lead">Эксперты ответят на любой вопрос и продемонстрируют как система Direcum HR Pro решает задачи вашего бизнеса.</p>
+        <form class="request__form" id="request-form" novalidate>
+          <div class="request__fields">
+            <label class="field">
+              <span class="visually-hidden">ФИО</span>
+              <input class="field__input" type="text" name="name" placeholder="ФИО*" autocomplete="name" required>
+            </label>
+            <label class="field">
+              <span class="visually-hidden">Компания</span>
+              <input class="field__input" type="text" name="company" placeholder="Начните вводить название или ИНН компании*" autocomplete="organization" required>
+            </label>
+            <div class="field field--phone">
+              <button class="field__country" type="button" aria-label="Код страны: Россия, +7">
+                <img src="img/flag-ru.png" width="24" height="24" alt="">
+                <img src="img/chevron-small.svg" width="16" height="16" alt="">
+              </button>
+              <label class="field__phone-label">
+                <span class="visually-hidden">Телефон</span>
+                <input class="field__input" type="tel" name="phone" value="+7 " autocomplete="tel" inputmode="tel">
+              </label>
+            </div>
+            <label class="field">
+              <span class="visually-hidden">Email</span>
+              <input class="field__input" type="email" name="email" placeholder="Email*" autocomplete="email" required>
+            </label>
+            <label class="field">
+              <span class="visually-hidden">Ваш вопрос</span>
+              <input class="field__input" type="text" name="question" placeholder="Ваш вопрос">
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="privacy" required>
+              <span class="checkbox__box" aria-hidden="true"></span>
+              <span class="checkbox__text">Ознакомлен с <a href="https://hrpro.directum.ru/policy/privacy-policy" target="_blank" rel="noopener">Политикой конфиденциальности</a>, соглашаюсь на обработку моих персональных данных</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="ads">
+              <span class="checkbox__box" aria-hidden="true"></span>
+              <span class="checkbox__text">Соглашаюсь на <a href="https://hrpro.directum.ru/policy/consent-to-receive" target="_blank" rel="noopener">получение информационных и рекламных материалов</a> от компании Директум</span>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="partners">
+              <span class="checkbox__box" aria-hidden="true"></span>
+              <span class="checkbox__text">Даю согласие на <a href="https://hrpro.directum.ru/policy/consent-to-transfer-personal-data-to-other-organizations" target="_blank" rel="noopener">обработку моих персональных данных партнерами Directum</a></span>
+            </label>
+          </div>
+          <button class="btn-primary request__submit" type="submit">Отправить</button>
+          <p class="request__done" role="status" hidden>Спасибо! Заявка отправлена — мы свяжемся с вами.</p>
+        </form>
+      </div>
+    </section>
   </main>
+
+  <!-- Модальное окно отзыва -->
+  <div class="modal" id="review-modal" hidden>
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-label="Отзыв" tabindex="-1">
+      <button class="modal__close" type="button" aria-label="Закрыть" data-modal-close></button>
+      <div class="modal__content"></div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer__inner container">
@@ -231,6 +389,7 @@
         <div class="variants__opts" data-variant-group="review">
           <button type="button" data-value="1">Читать 1</button>
           <button type="button" data-value="2">Читать 2</button>
+          <button type="button" data-value="3">Читать 3</button>
           <button type="button" data-value="video">Видео</button>
         </div>
       </div>

@@ -116,20 +116,31 @@
     return '<img class="review__logo" src="' + r.logo + '" width="219" height="70" alt="' + esc(r.logoAlt) + '">';
   }
 
-  var reviewTemplates = {
-    1: function (r) {
-      return '<article class="review review--v1">' +
-        reviewLogo(r) + reviewText(r) + reviewAuthor(r) +
-        '<div class="review__footer"><span class="pill">' + esc(r.industry) + '</span>' +
-          arrowLink('Перейти к кейсу', r.url) + '</div>' +
-      '</article>';
-    },
-    2: function (r) {
-      return '<article class="review review--v2">' +
+  function readCard(variant) {
+    return function (r, i) {
+      return '<article class="review review--read review--r' + variant + '">' +
         '<div class="review__head">' + reviewLogo(r) + '<span class="pill">' + esc(r.industry) + '</span></div>' +
-        reviewText(r) + arrowLink('Перейти к кейсу', r.url) + reviewAuthor(r) +
+        reviewText(r) +
+        '<a class="link-arrow" href="#review-' + i + '" data-review-open="' + i + '">Читать далее' +
+          '<img src="img/arrow-right.svg" width="24" height="24" alt=""></a>' +
+        reviewAuthor(r) +
       '</article>';
-    },
+    };
+  }
+
+  // Полный отзыв — показывается в модальном окне по «Читать далее»
+  function fullReview(r) {
+    return '<article class="review review--full">' +
+      reviewLogo(r) + reviewText(r) + reviewAuthor(r) +
+      '<div class="review__footer"><span class="pill">' + esc(r.industry) + '</span>' +
+        arrowLink('Перейти к кейсу', r.url) + '</div>' +
+    '</article>';
+  }
+
+  var reviewTemplates = {
+    1: readCard(1),
+    2: readCard(2),
+    3: readCard(3),
     video: function (v) {
       return '<article class="review review--video">' +
         '<a class="review__thumb" href="' + v.url + '"><img src="' + v.thumb + '" alt="Истории клиентов: Utair"></a>' +
@@ -170,7 +181,7 @@
     });
 
     var mode = state.review === 'video' ? 'watch' : 'read';
-    document.querySelectorAll('.mode-tab').forEach(function (t) {
+    document.querySelectorAll('[data-mode]').forEach(function (t) {
       var on = t.getAttribute('data-mode') === mode;
       t.classList.toggle('is-active', on);
       t.setAttribute('aria-selected', on);
@@ -217,7 +228,7 @@
   });
 
   // Вкладки «Читать / Смотреть отзывы»
-  document.querySelectorAll('.mode-tab').forEach(function (tab) {
+  document.querySelectorAll('[data-mode]').forEach(function (tab) {
     tab.addEventListener('click', function () {
       setReview(tab.getAttribute('data-mode') === 'watch' ? 'video' : lastReadVariant);
     });
@@ -232,5 +243,86 @@
     });
   });
 
+  // ---------- Модальное окно отзыва ----------
+  var modal = document.getElementById('review-modal');
+  var modalDialog = modal.querySelector('.modal__dialog');
+  var modalContent = modal.querySelector('.modal__content');
+  var lastFocus = null;
+
+  function openReview(i) {
+    var r = reviews[i];
+    if (!r) return;
+    lastFocus = document.activeElement;
+    modalContent.innerHTML = fullReview(r);
+    modalDialog.setAttribute('aria-label', 'Отзыв: ' + r.name);
+    modal.hidden = false;
+    document.body.classList.add('is-locked');
+    modalDialog.focus();
+  }
+
+  function closeReview() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove('is-locked');
+    if (lastFocus) lastFocus.focus();
+  }
+
+  reviewsList.addEventListener('click', function (e) {
+    var link = e.target.closest('[data-review-open]');
+    if (!link) return;
+    e.preventDefault();
+    openReview(+link.getAttribute('data-review-open'));
+  });
+  modal.addEventListener('click', function (e) {
+    if (e.target.closest('[data-modal-close]')) closeReview();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeReview();
+  });
+
+  // ---------- Форма заявки ----------
+  var form = document.getElementById('request-form');
+  var phone = form.elements.phone;
+
+  // в поле телефона всегда остаётся «+7 », дальше только цифры
+  phone.addEventListener('input', function () {
+    var digits = phone.value.replace(/^\+7/, '').replace(/\D/g, '').slice(0, 10);
+    phone.value = '+7 ' + digits;
+  });
+
+  function isValid(el) {
+    if (el.name === 'phone') return el.value.replace(/\D/g, '').length === 11;
+    if (el.type === 'checkbox') return !el.required || el.checked;
+    return el.checkValidity();
+  }
+
+  function markField(el) {
+    var box = el.closest('.field, .checkbox');
+    var ok = isValid(el);
+    box.classList.toggle('is-error', !ok);
+    el.setAttribute('aria-invalid', !ok);
+    return ok;
+  }
+
+  var checked = [form.elements.name, form.elements.company, phone, form.elements.email, form.elements.privacy];
+  checked.forEach(function (el) {
+    el.addEventListener(el.type === 'checkbox' ? 'change' : 'blur', function () { markField(el); });
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var firstBad = null;
+    checked.forEach(function (el) { if (!markField(el) && !firstBad) firstBad = el; });
+    if (firstBad) { firstBad.focus(); return; }
+    // отправки на сервер пока нет — показываем подтверждение
+    form.querySelector('.request__fields').hidden = true;
+    form.querySelector('.request__submit').hidden = true;
+    form.querySelector('.request__done').hidden = false;
+  });
+
   render();
+
+  // ссылка вида #review-1 сразу открывает отзыв
+  var hashMatch = /^#review-(\d+)$/.exec(location.hash);
+  if (hashMatch && state.review !== 'video') openReview(+hashMatch[1]);
 })();

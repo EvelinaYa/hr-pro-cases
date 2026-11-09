@@ -158,16 +158,19 @@
   var params = new URLSearchParams(location.search);
   var state = {
     case: caseTemplates[params.get('case')] ? params.get('case') : '1',
-    review: reviewTemplates[params.get('review')] ? params.get('review') : '1'
+    review: reviewTemplates[params.get('review')] ? params.get('review') : '1',
+    effect: params.get('effect') === '2' ? '2' : '1'
   };
   // последний выбранный «текстовый» вариант — к нему вернёмся с вкладки «Смотреть»
   var lastReadVariant = state.review === 'video' ? '1' : state.review;
 
   var casesList = document.getElementById('cases-list');
   var reviewsList = document.getElementById('reviews-list');
+  var effectsList = document.getElementById('effects-list');
 
   function render() {
     casesList.innerHTML = cases.map(caseTemplates[state.case]).join('');
+    effectsList.classList.toggle('effects--v2', state.effect === '2');
     var data = state.review === 'video' ? videoReviews : reviews;
     reviewsList.innerHTML = data.map(reviewTemplates[state.review]).join('');
 
@@ -190,6 +193,7 @@
     var q = new URLSearchParams(location.search);
     q.set('case', state.case);
     q.set('review', state.review);
+    q.set('effect', state.effect);
     history.replaceState(null, '', location.pathname + '?' + q.toString() + location.hash);
   }
 

@@ -314,6 +314,8 @@ button { font: inherit; color: inherit; border: 0; background: none; padding: 0;
   color: var(--white);
 }
 .case--v3 .case__visual { position: absolute; inset: 0; }
+.case--v3 .case__visual::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .4); }
+.case--v3 .case__logo { z-index: 1; }
 .case--v3 .case__photo { left: 50%; top: -65px; width: 699px; height: 466px; transform: translateX(calc(-50% + .5px)); }
 .case--v3 .case__logo { left: 50%; top: 75px; width: 305px; height: 60px; transform: translateX(-50%); }
 .case--v3 .industry-tag { top: 18px; }
@@ -514,7 +516,7 @@ body.is-locked { overflow: hidden; }
 .effect--iek .effect__bg { transform: translateY(-58.4%); }
 .effect--utair .effect__bg { opacity: 1; transform: translateY(-36.4%); }
 
-.effect__row { position: relative; display: flex; align-items: flex-start; gap: 24px; }
+.effect__row { position: relative; z-index: 1; display: flex; align-items: flex-start; gap: 24px; }
 .effect__logo { flex: none; display: flex; align-items: center; justify-content: center; width: 320px; height: 80px; }
 .effect__logo--left { justify-content: flex-start; padding-left: 28px; }
 .logo-utair { display: flex; align-items: center; gap: 41px; }
@@ -532,6 +534,23 @@ body.is-locked { overflow: hidden; }
 .effect__stat { flex: 0 1 225px; min-width: 0; }
 .effect__about { flex: 1 1 506px; min-width: 0; }
 .effect__num { font-size: 24px; line-height: 30px; font-weight: 700; color: var(--accent); }
+
+/* --- Бизнес-эффекты, вариант 2: тёмная вуаль, полупрозрачные плашки --- */
+.effects--v2 .effect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, .5);
+  -webkit-backdrop-filter: blur(3.5px);
+          backdrop-filter: blur(3.5px);
+}
+.effects--v2 .effect--titan .effect__bg { opacity: 1; }
+.effects--v2 .effect { --effect-accent: #6ed4ff; }
+.effects--v2 .effect--lenta, .effects--v2 .effect--utair { --effect-accent: #ff51a5; }
+.effects--v2 .effect__stat, .effects--v2 .effect__about { background: rgba(0, 0, 0, .4); color: var(--white); }
+.effects--v2 .effect__num, .effects--v2 .link-more { color: var(--effect-accent); }
+.effects--v2 .link-more__img { display: none; }
+.effects--v2 .link-more__img--alt { display: block; }
 
 /* ===== Вебинары ===== */
 .webinars__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
@@ -644,6 +663,7 @@ body.is-locked { overflow: hidden; }
 .link-more { display: inline-flex; align-items: center; gap: 24px; align-self: flex-start; color: var(--accent); }
 .link-more__icon { position: relative; width: 24px; height: 24px; overflow: hidden; }
 .link-more__icon img { position: absolute; left: 4.25px; top: 4.25px; transform: scaleX(-1); transition: transform .2s; }
+.link-more__img--alt { display: none; }
 .link-more:hover .link-more__icon img { transform: scaleX(-1) translate(-2px, -2px); }
 
 /* ===== Подвал ===== */
